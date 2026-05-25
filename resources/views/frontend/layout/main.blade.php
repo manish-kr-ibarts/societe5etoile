@@ -14,7 +14,7 @@
         rel="stylesheet">
 
     <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{ asset('js/tailwind.js') }}"></script>
 
     <style>
         body {
