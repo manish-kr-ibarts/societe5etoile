@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - Elite Society</title>
+    <title>Forgot Password - Elite Society</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,9 +68,8 @@
         <div class="hidden lg:flex lg:w-1/2 bg-gradient-to-tr from-luxury-100 via-luxury-50 to-white p-16 flex-col justify-between relative">
 
             <!-- Logo -->
-            {{-- LOGO --}}
             <div class="h-20 flex items-center">
-                <a href="" class="flex items-center gap-5">
+                <a href="{{ route('home') }}" class="flex items-center gap-5">
                     <div class="flex items-center justify-center gap-4">
                         <img src="/storage/logo/logo.jfif" alt="logo" class="w-20 h-20">
                         <img src="/storage/logo/Flag_Comoros.png" alt="logo" class="w-20 h-20">
@@ -83,15 +82,14 @@
             <div class="z-10 my-auto py-10">
 
                 <h1 class="text-5xl font-extrabold text-slate-800 leading-tight">
-                    Excellence <br>
+                    Recover <br>
                     <span class="bg-gradient-to-r from-luxury-500 to-luxury-600 bg-clip-text text-transparent">
-                        Every Day.
+                        Your Access.
                     </span>
                 </h1>
 
                 <p class="text-slate-500 mt-6 text-base leading-relaxed max-w-sm">
-                    Access the premium administrative portal. Manage your properties,
-                    requests, and service standards with complete control.
+                    Enter your email address and we'll send you a link to reset your password and get back into your portal.
                 </p>
 
             </div>
@@ -121,33 +119,39 @@
             <!-- Heading -->
             <div class="mb-8">
                 <h2 class="text-3xl font-extrabold text-slate-800">
-                    Welcome Back
+                    Forgot Password
                 </h2>
 
                 <p class="text-slate-500 mt-2 text-sm">
-                    Please log in to manage your dashboard.
+                    No problem. Just let us know your email address and we will email you a password reset link.
                 </p>
             </div>
+
+            <!-- Status Message -->
+            @if (session('status'))
+            <div class="mb-6 p-4 bg-green-50 border border-green-100 rounded-2xl">
+                <p class="text-sm font-semibold text-green-800">
+                    {{ session('status') }}
+                </p>
+            </div>
+            @endif
 
             <!-- Errors -->
             @if ($errors->any())
             <div class="mb-6 p-4 bg-red-50 border border-red-100 rounded-2xl">
-
                 <h4 class="text-sm font-semibold text-red-800 mb-2">
-                    Verification Failed
+                    Whoops! Something went wrong.
                 </h4>
-
                 <ul class="text-xs text-red-700 list-disc list-inside">
                     @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                     @endforeach
                 </ul>
-
             </div>
             @endif
 
             <!-- Form -->
-            <form action="{{ Route::has('admin.login') ? route('admin.login') : '#' }}" method="POST" class="space-y-6">
+            <form action="{{ route('password.email') }}" method="POST" class="space-y-6">
                 @csrf
 
                 <!-- Email -->
@@ -165,52 +169,11 @@
                         class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:ring-4 focus:ring-luxury-100 focus:border-luxury-400 transition-all duration-300">
                 </div>
 
-                <!-- Password -->
-                <div>
-                    <label class="block text-sm font-medium text-slate-600 mb-2">
-                        Password
-                    </label>
-
-                    <div class="relative">
-
-                        <input
-                            type="password"
-                            name="password"
-                            id="password"
-                            required
-                            placeholder="••••••••"
-                            class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:ring-4 focus:ring-luxury-100 focus:border-luxury-400 transition-all duration-300">
-
-                        <button
-                            type="button"
-                            id="password-toggle"
-                            class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-luxury-500">
-
-                            👁
-
-                        </button>
-
-                    </div>
-                </div>
-
-                <!-- Remember -->
+                <!-- Back to Login -->
                 <div class="flex items-center justify-between text-sm">
-
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input
-                            type="checkbox"
-                            name="remember"
-                            class="accent-luxury-500">
-
-                        <span class="text-slate-500">
-                            Remember me
-                        </span>
-                    </label>
-
-                    <a href="{{ route('password.request') }}" class="text-luxury-500 font-semibold hover:underline">
-                        Forgot Password?
+                    <a href="{{ route('admin.loginPage') }}" class="text-slate-500 hover:text-luxury-500 font-medium transition-colors">
+                        &larr; Back to login
                     </a>
-
                 </div>
 
                 <!-- Button -->
@@ -218,7 +181,7 @@
                     type="submit"
                     class="w-full py-3.5 bg-gradient-to-r from-luxury-500 to-luxury-600 hover:from-luxury-600 hover:to-luxury-700 text-white rounded-xl font-semibold shadow-lg hover-lift">
 
-                    Sign In to Dashboard
+                    Email Password Reset Link
 
                 </button>
 
@@ -226,26 +189,6 @@
         </div>
 
     </div>
-
-    <!-- Password Toggle -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
-            const passwordInput = document.getElementById('password');
-            const passwordToggle = document.getElementById('password-toggle');
-
-            passwordToggle.addEventListener('click', function() {
-
-                if (passwordInput.type === 'password') {
-                    passwordInput.type = 'text';
-                } else {
-                    passwordInput.type = 'password';
-                }
-
-            });
-
-        });
-    </script>
 
 </body>
 
