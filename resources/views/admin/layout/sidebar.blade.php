@@ -26,10 +26,10 @@
             {{-- Dashboard --}}
             <li>
 
-                <a href=""
-                    class="flex items-center gap-3 bg-amber-600 text-white px-4 py-3 rounded-xl font-medium">
+                <a href="{{ url('admin/dashboard') }}"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition {{ request()->is('admin/dashboard*') ? 'bg-amber-600 text-white' : 'text-slate-600 hover:bg-[#f8f5f0]' }}">
 
-                    <i class="fa-solid fa-grid-2 text-sm"></i>
+                    <i class="fa-solid fa-gauge text-sm"></i>
 
                     Dashboard
 
@@ -40,8 +40,8 @@
             {{-- Products --}}
             <li>
 
-                <a href=""
-                    class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-600 hover:bg-[#f8f5f0] transition">
+                <a href="{{ route('admin.products.index') }}"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition {{ request()->is('admin/products*') ? 'bg-amber-600 text-white' : 'text-slate-600 hover:bg-[#f8f5f0]' }}">
 
                     <i class="fa-solid fa-box text-sm"></i>
 
@@ -51,15 +51,15 @@
 
             </li>
 
-            {{-- Categories --}}
+            {{-- Product Categories --}}
             <li>
 
-                <a href=""
-                    class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-600 hover:bg-[#f8f5f0] transition">
+                <a href="{{ route('admin.categories.index') }}"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition {{ request()->is('admin/categories*') ? 'bg-amber-600 text-white' : 'text-slate-600 hover:bg-[#f8f5f0]' }}">
 
                     <i class="fa-solid fa-layer-group text-sm"></i>
 
-                    Categories
+                    Product Categories
 
                 </a>
 
@@ -67,8 +67,8 @@
 
             {{-- QR Codes --}}
             <li>
-                <a href=""
-                    class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-600 hover:bg-[#f8f5f0] transition">
+                <a href="{{ route('admin.qrcodes.index') }}"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition {{ request()->is('admin/qrcodes*') ? 'bg-amber-600 text-white' : 'text-slate-600 hover:bg-[#f8f5f0]' }}">
                     <i class="fa-solid fa-qrcode text-sm"></i>
                     QR Codes
                 </a>
@@ -77,7 +77,7 @@
             {{-- Users --}}
             <li>
                 <a href=""
-                    class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-600 hover:bg-[#f8f5f0] transition">
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition {{ request()->is('admin/users*') ? 'bg-amber-600 text-white' : 'text-slate-600 hover:bg-[#f8f5f0]' }}">
                     <i class="fa-solid fa-users text-sm"></i>
                     User List
                 </a>
