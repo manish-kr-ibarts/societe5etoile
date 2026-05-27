@@ -16,10 +16,10 @@
         <div class="flex items-center gap-3">
             <div class="text-right">
                 <h4 class="text-sm font-semibold">
-                    Admin
+                    {{ Auth::user()->name }}
                 </h4>
                 <p class="text-xs text-slate-400">
-                    Administrator
+                    {{ Auth::user()->role }}
                 </p>
             </div>
             <form method="POST" action="{{ route('admin.logout') }}" class="m-0">
